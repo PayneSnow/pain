@@ -1,4 +1,7 @@
-{:project {
+
+  {:journal-basis "daily" 
+
+ :project {
            ;; Selected public notes can be published to https://logseq.com/your-project-or-your-username.
            :name ""
            :alias ""
@@ -48,7 +51,7 @@
     :result-transform (fn [result]
                         (sort-by (fn [h]
                                    (get h :block/priority "Z")) result))
-    :collapsed? true}
+    :collapsed? false}
    {:title "📅 NEXT"
     :query [:find (pull ?h [*])
             :in $ ?start ?next
@@ -61,7 +64,7 @@
             [(< ?d ?next)]
             [(contains? #{"NOW" "LATER" "TODO"} ?marker)]]
     :inputs [:today :7d-after]
-    :collapsed? true}]}
+    :collapsed? false}]}
 
  ;; Add your own commands to speedup.
  ;; E.g. [["js" "Javascript"]]
@@ -75,5 +78,4 @@
  ;; input "{{{poem(red,blue)}}}"
  ;; becomes
  ;; Rose is red, violet's blue. Life's ordered: Org assists you.
- :macros {}
- :feature/enable-block-time? true}
+ :macros {}}
